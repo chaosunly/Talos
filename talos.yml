@@ -1,0 +1,33 @@
+serve:
+  http:
+    host: ${TALOS_HTTP_HOST}
+    port: ${PORT}
+    request_log:
+      exclude_health_endpoints: true
+  metrics:
+    host: ${TALOS_METRICS_HOST}
+    port: ${TALOS_METRICS_PORT}
+
+credentials:
+  issuer: ${TALOS_CREDENTIALS_ISSUER}
+  api_keys:
+    default_ttl: ${TALOS_API_KEYS_DEFAULT_TTL}
+    max_ttl: ${TALOS_API_KEYS_MAX_TTL}
+    prefix:
+      current: ${TALOS_API_KEYS_PREFIX_CURRENT}
+  derived_tokens:
+    default_ttl: ${TALOS_DERIVED_TOKENS_DEFAULT_TTL}
+    macaroon:
+      prefix:
+        current: ${TALOS_MACAROON_PREFIX_CURRENT}
+
+secrets:
+  hmac:
+    current: ${TALOS_SECRETS_HMAC_CURRENT}
+
+db:
+  dsn: ${TALOS_DB_DSN}
+
+log:
+  level: info
+  format: json
