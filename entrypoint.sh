@@ -29,7 +29,7 @@ echo "  TALOS_METRICS_PORT: ${TALOS_METRICS_PORT}"
 envsubst < /etc/talos/talos.yml > /tmp/talos.yml
 
 echo "Running Talos migrations..."
-talos migrate up --database "${TALOS_DB_DSN}" --yes
+talos migrate up --database "${TALOS_DB_DSN}"
 
 echo "Starting Talos server..."
 exec talos serve --config /tmp/talos.yml
