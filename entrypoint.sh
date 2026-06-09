@@ -28,8 +28,11 @@ echo "  TALOS_METRICS_PORT: ${TALOS_METRICS_PORT}"
 
 envsubst < /etc/talos/talos.yml > /tmp/talos.yml
 
+# Fix volume ownership in case Railway mounted it as root
+chown -R ory:ory /var/lib/talos
+
 echo "Running Talos migrations..."
-talos migrate up --database "${TALOS_DB_DSN}"
+su-exec ory talos migrate up --database "${TALOS_DB_DSN}"
 
 echo "Starting Talos server..."
-exec talos serve --config /tmp/talos.yml
+exec su-exec ory talos serve --config /tmp/talos.yml
