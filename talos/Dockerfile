@@ -11,7 +11,7 @@ RUN apk add --no-cache gettext su-exec \
 
 WORKDIR /etc/talos
 
-COPY talos.yml /etc/talos/talos.yml
-COPY --chmod=755 entrypoint.sh /entrypoint.sh
+COPY talos/talos.yml /etc/talos/talos.yml
+COPY --chmod=755 talos/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
